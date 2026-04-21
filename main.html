@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CINEVISION Studio — Bengaluru</title>
+  <meta name="description" content="Premium cinematic photography & videography studio in Bengaluru. Weddings, baby shoots, pre-wedding, events, drone & commercial photography.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+const supabase = window.supabase.createClient(
+  "https://mrwvlnqqvjmkdsjegrny.supabase.co/rest/v1/",
+  "sb_publishable_MDx3whtSPRvUxp9kNYBt7g_eaEEVWtj"
+);
+</script>
+
+
+<script>
+async function test() {
+  const { data, error } = await supabase.from('posts').select('*');
+  console.log(data, error);
+}
+test();
+</script>
+
+
+  <!-- 3D Background Canvas -->
+ <canvas id="bg3d" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+   <!-- Scanlines -->
+  <div style="position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:1;"></div>
+
+  <!-- ── NAVBAR ─────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <img src="assets/logo.jpeg" alt="CINEVISION" onerror="this.style.display='none'">
+      <div class="nav-logo-text"><span>CINE</span><span>VISION</span></div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/918296330246?text=Hi%20CINEVISION,%20I%20want%20to%20Book%20a%20Slot" target="_blank" class="nav-book-btn">Book Now</a>
+    <div class="nav-hamburger" id="navHamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ BENGALURU'S FINEST STUDIO</div>
+      <h1 class="hero-title">
+        <span class="line1">CINE</span><span class="line2">VISION</span>
+      </h1>
+      <p class="hero-subtitle">Capturing love, stories &amp; timeless cinematic moments. Every frame crafted with passion, precision and artistry.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        <a href="https://wa.me/918296330246?text=Hi%20CINEVISION,%20I%20want%20to%20Book%20a%20Slot" target="_blank" class="btn-secondary">Book a Session</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ── PORTFOLIO ─────────────────────────── -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Our Work</span>
+        <h2 class="section-title" style="text-align:center">Gallery <span>Portfolio</span></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">A curated selection of our finest cinematic moments — each frame a timeless story.</p>
+      </div>
+      <div style="margin-top:3rem">
+        <div class="portfolio-tabs" id="portfolioTabs"></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="gallery-empty" id="galleryEmpty" style="display:none">
+          <p style="font-size:1rem;margin-bottom:0.5rem">No images in this category yet.</p>
+          <a href="admin.html" style="color:var(--red)">Upload via Admin Panel</a>
+          <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--gray)">or edit data/gallery.json</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ───────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title" style="text-align:center">Our <span>Services</span></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">From intimate baby shoots to grand cinematic productions — we cover it all.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">💍</div>
+          <h3 class="service-title">Wedding Photography</h3>
+          <p class="service-desc">Cinematic wedding coverage that captures every emotion, every vow, and every laugh from your most special day.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">👶</div>
+          <h3 class="service-title">Baby Shoot</h3>
+          <p class="service-desc">Soft, dreamy and heartwarming portraits of your little one's earliest and most precious moments.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">💑</div>
+          <h3 class="service-title">Pre-Wedding</h3>
+          <p class="service-desc">Romantic pre-wedding stories told through stunning locations and creative direction that is uniquely yours.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🎉</div>
+          <h3 class="service-title">Events Coverage</h3>
+          <p class="service-desc">Half sarees, namings, housewarmings, anniversaries — every milestone beautifully documented.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🎬</div>
+          <h3 class="service-title">Cinematic Video</h3>
+          <p class="service-desc">Hollywood-inspired cinematic films crafted with professional grading and storytelling techniques.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🚁</div>
+          <h3 class="service-title">Drone Aerial</h3>
+          <p class="service-desc">Breathtaking aerial perspectives that add a grand cinematic dimension to your memories.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📸</div>
+          <h3 class="service-title">Commercial</h3>
+          <p class="service-desc">Product shoots, brand campaigns and fashion editorials crafted with a professional commercial eye.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🌟</div>
+          <h3 class="service-title">Fashion Shoot</h3>
+          <p class="service-desc">Editorial and personal fashion photography that celebrates your unique style and personality.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ──────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://picsum.photos/seed/cvabout/600/750" alt="CINEVISION Studio" loading="lazy">
+          <div class="about-badge">
+            <span class="about-badge-num">5+</span>
+            <span class="about-badge-text">Years of Excellence</span>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">Where Passion Meets <span>Cinema</span></h2>
+          <p>CINEVISION Studio was born from a deep love for storytelling through the lens. Based in the heart of Bengaluru, we believe that every moment — no matter how fleeting — deserves to be captured with the same artistry as a motion picture.</p>
+          <p>From intimate baby shoots to grand wedding productions, our team approaches every assignment with a filmmaker's eye and a photographer's heart. We don't just take photos — we craft visual legacies that you'll treasure for generations.</p>
+          <p>With over 5 years of cinematic excellence and 500+ happy families, CINEVISION is Bengaluru's trusted name in premium photography and videography.</p>
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-num">500+</div>
+              <div class="about-stat-label">Happy Clients</div>
+            </div>
+            <div>
+              <div class="about-stat-num">5+</div>
+              <div class="about-stat-label">Years Active</div>
+            </div>
+            <div>
+              <div class="about-stat-num">1000+</div>
+              <div class="about-stat-label">Events Shot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ────────────────────────────── -->
+  <section id="pricing">
+    <div class="pricing-glow"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="text-center reveal">
+        <span class="section-label">Packages</span>
+        <h2 class="section-title" style="text-align:center">One Day Events <span>Photography</span></h2>
+        <span style="display:inline-block;background:rgba(200,16,46,0.15);color:var(--red);padding:0.4rem 1.25rem;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;border:1px solid rgba(200,16,46,0.3)">Special Package</span>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-inner">
+          <!-- Left -->
+          <div class="pricing-left">
+            <div class="pricing-services-title">
+              <div class="pricing-cv-badge">CV</div>
+              <h3>Services Included</h3>
+            </div>
+            <ul class="pricing-list">
+              <li><div class="pricing-check">✓</div> Birthday Shoot</li>
+              <li><div class="pricing-check">✓</div> Half Saree Ceremony</li>
+              <li><div class="pricing-check">✓</div> Anniversary Shoot</li>
+              <li><div class="pricing-check">✓</div> Naming Ceremony</li>
+              <li><div class="pricing-check">✓</div> House Warming</li>
+              <li><div class="pricing-check">✓</div> Maternity Shoot</li>
+              <li><div class="pricing-check">✓</div> Car / Bike Delivery</li>
+              <li><div class="pricing-check">✓</div> Shop Opening Shoot</li>
+              <li><div class="pricing-check">✓</div> Product Shoot</li>
+              <li><div class="pricing-check">✓</div> Fashion Shoot</li>
+            </ul>
+          </div>
+
+          <!-- Right -->
+          <div class="pricing-right">
+            <p class="pricing-label">All-Inclusive Package</p>
+            <div class="pricing-amount">₹7499<sup>/-</sup></div>
+            <p class="pricing-coverage">One Day — Full Coverage</p>
+            <div class="pricing-bonus">
+              <p class="pricing-bonus-title">Exclusive Bonus Included</p>
+              <p class="pricing-bonus-desc">Pendrive + 2 Printed Frames</p>
+            </div>
+            <div class="pricing-actions">
+              <a href="https://wa.me/918296330246?text=Hi%20CINEVISION,%20I%20want%20to%20Book%20a%20Slot" target="_blank" class="btn-wa">Book on WhatsApp</a>
+              <a href="tel:+918296330246" class="btn-call">Call +91 8296330246</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ──────────────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Kind Words</span>
+        <h2 class="section-title" style="text-align:center">Client <span>Stories</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-slider">
+        <div id="testimonialCards"></div>
+        <div class="testimonial-nav">
+          <button class="tnav-btn" id="tPrev">←</button>
+          <button class="tnav-btn" id="tNext">→</button>
+        </div>
+        <div class="testimonial-dots" id="testimonialDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title" style="text-align:center">Let's Create Something <span>Beautiful</span></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Every great story begins with a conversation. Reach out and let's craft yours together.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="contact-form reveal">
+          <h3 class="form-title">Send an Enquiry</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="e.g.+91 12345 12345 " required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label>Event Type</label>
+              <select>
+                <option value="">Select an event…</option>
+                <option>Wedding Photography</option>
+                <option>Baby Shoot</option>
+                <option>Pre-Wedding</option>
+                <option>One Day Event</option>
+                <option>Cinematic Video</option>
+                <option>Drone Aerial</option>
+                <option>Commercial</option>
+                <option>Fashion Shoot</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="4" placeholder="Tell us about your event, date, location…"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Enquiry</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✓</div>
+            <h3>Enquiry Sent!</h3>
+            <p>We'll reach out within 24 hours. Thank you for choosing CINEVISION.</p>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info reveal">
+          <h3 class="form-title">Studio Details</h3>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-val">Bengaluru, Karnataka, India</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-val"><a href="tel:+918296330246">+91 8296330246</a></div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val"><a href="mailto:cinevision.in@gmail.com">cinevision.in@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-val">
+                <a href="https://wa.me/918296330246?text=Hi%20CINEVISION,%20I%20want%20to%20Book%20a%20Slot" target="_blank">Chat on WhatsApp</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📸</div>
+            <div>
+              <div class="contact-item-label">Instagram</div>
+              <div class="contact-item-val"><a href="https://instagram.com/cinevision.in" target="_blank">@cinevision.in</a></div>
+            </div>
+          </div>
+
+          <div class="contact-wa-btn">
+            <a href="https://wa.me/918296330246?text=Hi%20CINEVISION,%20I%20want%20to%20Book%20a%20Slot" target="_blank" class="btn-wa" style="display:block;text-align:center;margin-top:1.5rem">
+              Book on WhatsApp →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-logo">CINE<span>VISION</span></div>
+          <p class="footer-brand-desc">"Capturing Love, Stories &amp; Timeless Moments"<br>Premium cinematic photography &amp; videography studio in Bengaluru, India.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/918296330246" target="_blank" class="social-btn">💬</a>
+            <a href="https://instagram.com/cinevision.in" target="_blank" class="social-btn">📸</a>
+            <a href="tel:+918296330246" class="social-btn">📞</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="admin.html">Admin Panel</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+918296330246">+91 8296330246</a></li>
+            <li><a href="mailto:cinevision.in@gmail.com">cinevision.in@gmail.com</a></li>
+            <li><a href="https://instagram.com/cinevision.in" target="_blank">@cinevision.in</a></li>
+            <li>Bengaluru, Karnataka, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 CINEVISION Studio. All rights reserved. Bengaluru, India.</p>
+        <p>Powered by passion &amp; precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/bg3d.js"></script>
+</body>
+</html>

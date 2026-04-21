@@ -1,0 +1,19 @@
+{
+  "featured": [
+    "https://picsum.photos/seed/cv-wed1/600/800",
+    "https://picsum.photos/seed/cv-baby1/600/600",
+    "https://picsum.photos/seed/cv-pre1/800/600",
+    "https://picsum.photos/seed/cv-evt1/600/800",
+    "https://picsum.photos/seed/cv-cin1/800/500",
+    "https://picsum.photos/seed/cv-drn1/800/500",
+    "https://picsum.photos/seed/cv-com1/600/600",
+    "https://picsum.photos/seed/cv-wed2/600/700"
+  ],
+  "wedding": [],
+  "baby": [],
+  "prewedding": [],
+  "events": [],
+  "cinematic": [],
+  "drone": [],
+  "commercial": []
+}

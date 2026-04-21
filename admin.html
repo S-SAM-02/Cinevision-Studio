@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — CINEVISION Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── LOGIN SCREEN ───────────────────────── -->
+  <div class="admin-login" id="adminLogin">
+    <div class="admin-login-card">
+      <div class="admin-login-logo">CINE<span>VISION</span></div>
+      <p class="admin-login-sub">GALLERY ADMIN PANEL</p>
+
+      <div class="admin-login-error" id="loginError"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="adminUser" placeholder="Enter username" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="adminPass" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="form-submit" style="margin-top:0.5rem">Sign In</button>
+      </form>
+
+      <p style="text-align:center;margin-top:1.25rem;font-size:0.75rem;color:var(--gray)">
+        <a href="index.html" style="color:var(--gray)">← Back to Website</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ── ADMIN DASHBOARD ────────────────────── -->
+  <div class="admin-page" id="adminDashboard">
+
+    <header class="admin-header">
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <div class="admin-header-logo">CINE<span>VISION</span></div>
+        <span class="admin-header-sub">Gallery Admin</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <a href="index.html" style="font-size:0.75rem;color:var(--gray);letter-spacing:0.08em">← View Site</a>
+        <button class="admin-logout" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-label">Uploaded Images</div>
+          <div class="stat-value" id="statUploads">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Featured (ALL Tab)</div>
+          <div class="stat-value" id="statFeatured">0/8</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">JSON Images</div>
+          <div class="stat-value" id="statJSON">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Categories</div>
+          <div class="stat-value" id="statCats">7</div>
+        </div>
+      </div>
+
+      <!-- Info Banner -->
+      <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.2);border-radius:12px;padding:1rem 1.5rem;margin-bottom:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.7)">
+        <strong style="color:var(--red)">💡 Two Ways to Add Images:</strong>
+        &nbsp;(1) Upload directly below &nbsp;|&nbsp;
+        (2) Edit <code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px">data/gallery.json</code> and paste any image URL — refresh to see changes.
+      </div>
+
+      <div class="admin-grid">
+
+        <!-- Upload Panel -->
+        <div class="upload-panel">
+          <h3 class="panel-title">Upload New Images</h3>
+
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-icon">🖼️</div>
+            <p class="drop-text"><strong>Drop images here</strong><br>or click to browse</p>
+            <input type="file" id="fileInput" accept="image/*" multiple>
+          </div>
+
+          <div id="uploadPreview" class="upload-preview"></div>
+
+          <div class="form-group">
+            <label>Image Title / Label</label>
+            <input type="text" id="uploadTitle" placeholder="e.g. Priya & Rahul Wedding" style="background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:0.7rem 1rem;color:var(--white);font-family:Inter,sans-serif;width:100%;outline:none">
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select id="uploadCategory" class="admin-filter-select" style="width:100%"></select>
+          </div>
+
+          <div class="upload-progress" id="uploadProgress">
+            <div class="progress-label">
+              <span>Uploading…</span>
+              <span id="progressPct">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <button class="form-submit" id="uploadBtn" style="border-radius:8px">Upload Images</button>
+
+          <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <h4 style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;color:var(--gray-light)">📂 Add via JSON</h4>
+            <p style="font-size:0.8rem;color:var(--gray);line-height:1.7">
+              Open <code style="background:rgba(255,255,255,0.06);padding:2px 5px;border-radius:3px">data/gallery.json</code> and paste any image URL or local file path inside the matching category array. Refresh the page to see changes.
+            </p>
+            <pre style="background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.72rem;color:var(--gray-light);overflow-x:auto;margin-top:0.75rem;line-height:1.6">"wedding": [
+  "images/default/wed1.jpg",
+  "https://example.com/photo.jpg"
+]</pre>
+          </div>
+        </div>
+
+        <!-- Gallery Management -->
+        <div class="gallery-panel">
+          <div class="admin-filter-row">
+            <h3 class="panel-title" style="margin-bottom:0;border-bottom:none;padding-bottom:0">Manage Gallery</h3>
+            <select id="galleryFilter" class="admin-filter-select"></select>
+          </div>
+
+          <p style="font-size:0.75rem;color:var(--gray);margin-bottom:1rem">
+            Hover over an image to ★ feature it or ✕ delete it. Featured images appear in the ALL tab (max 8).
+          </p>
+
+          <div class="admin-gallery" id="adminGalleryGrid">
+            <p style="color:var(--gray);font-size:0.85rem;padding:1rem">Loading gallery…</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
